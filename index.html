@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stephanie Simon | Personal Trainer Chicago</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #1a1a1a;
+      --accent: #e8ff3a;
+      --accent2: #c8e600;
+      --white: #f5f5f5;
+      --gray: #888;
+      --border: #2a2a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      opacity: 1 !important;
+    }
+
+    .nav-cta:hover { background: var(--accent2) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 48px 80px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0f1a00 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,255,58,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,255,58,0.1);
+      border: 1px solid rgba(232,255,58,0.3);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      max-width: 800px;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #aaa;
+      max-width: 480px;
+      margin-bottom: 44px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--black);
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.8rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* SECTION COMMON */
+    section { padding: 100px 48px; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      color: #888;
+      max-width: 500px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* SERVICES */
+    .services { background: var(--dark); }
+
+    .services-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .service-card:hover { border-color: rgba(232,255,58,0.3); transform: translateY(-4px); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #888;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .service-price {
+      margin-top: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--black); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-placeholder {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 8rem;
+      color: rgba(232,255,58,0.15);
+      letter-spacing: 4px;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--accent);
+      color: var(--black);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .about-content .section-title { margin-bottom: 28px; }
+
+    .about-content p {
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--dark); }
+
+    .testimonials-header { margin-bottom: 60px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 16px; }
+
+    .testimonial-card blockquote {
+      color: #bbb;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .testimonial-title {
+      color: var(--gray);
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #0f1a00, #0a0a0a);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section .section-title { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; }
+    .cta-section .section-sub { margin: 0 auto 44px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .nav-logo { font-size: 1.2rem; }
+
+    footer p {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .hero-stats { gap: 28px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-visual { aspect-ratio: 3/2; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Steph Simon</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Results</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Session</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">📍 Chicago Personal Trainer</div>
+    <h1>Train Hard.<br /><span>Live Strong.</span></h1>
+    <p class="hero-sub">
+      Chicago-based personal trainer specializing in body transformation,
+      online coaching, and custom program design. In-person and remote.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Book a Free Consult</a>
+      <a href="#services" class="btn-secondary">View Programs</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Training</div>
+      </div>
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Clients Transformed</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Programs Available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="section-tag">What I Offer</div>
+      <h2 class="section-title">Programs Built<br />Around You</h2>
+      <p class="section-sub">
+        Whether you're just starting out or pushing past a plateau, every program
+        is tailored to your body, your goals, and your schedule.
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏋️</div>
+        <h3>1-on-1 In-Person Training</h3>
+        <p>Private sessions at your gym or mine in Chicago. Full attention, real-time feedback, and a program that evolves as you do.</p>
+        <div class="service-price">Starting at $75/session</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Online Coaching</h3>
+        <p>Train on your schedule from anywhere in the world. Weekly check-ins, form feedback via video, and 24/7 messaging support.</p>
+        <div class="service-price">Starting at $199/month</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Custom Program Design</h3>
+        <p>A fully personalized training plan built for your specific goals, equipment, and lifestyle. One-time purchase, lifetime results.</p>
+        <div class="service-price">Starting at $149/program</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>HIIT Bootcamp Classes</h3>
+        <p>High-intensity group training in Chicago. Burn fat, build endurance, and do it alongside a community that pushes you further.</p>
+        <div class="service-price">Drop-in & membership options</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-placeholder">SS</div>
+        <div class="about-badge">📍 Chicago, IL</div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">About Stephanie</div>
+        <h2 class="section-title">Fitness Is a<br />Mindset First</h2>
+        <p>
+          I'm Stephanie Simon — a certified personal trainer based in Chicago with a
+          passion for helping people discover what their bodies are truly capable of.
+          I specialize in body transformation, strength building, and the mental side
+          of getting fit.
+        </p>
+        <p>
+          Whether you want to lose weight, build muscle, or just move better and feel
+          better, I'll build a plan that actually fits your life — not someone else's.
+          No cookie-cutter programs. No wasted time.
+        </p>
+        <p>
+          I also teach HIIT bootcamp classes and work with clients both in-person
+          across Chicago and online nationwide.
+        </p>
+        <div class="about-badges">
+          <span class="badge">✓ Certified Personal Trainer</span>
+          <span class="badge">✓ Online Coaching</span>
+          <span class="badge">✓ Custom Programs</span>
+          <span class="badge">✓ HIIT & Bootcamp</span>
+          <span class="badge">✓ Chicago Based</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-header">
+      <div class="section-tag">Client Results</div>
+      <h2 class="section-title">Real People,<br />Real Results</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Stephanie completely changed how I think about fitness. I lost 22 lbs in 4 months but more importantly I actually enjoy working out now. She's the real deal."</blockquote>
+        <div class="testimonial-author">Marcus T.</div>
+        <div class="testimonial-title">Online Coaching Client</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I'd tried every program out there. What's different with Steph is the customization. She listens, adjusts, and actually cares about your progress."</blockquote>
+        <div class="testimonial-author">Jess R.</div>
+        <div class="testimonial-title">1-on-1 Training Client, Chicago</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Her bootcamp classes are no joke — but the energy is incredible. I've been coming every week for 8 months and I've never felt stronger."</blockquote>
+        <div class="testimonial-author">Alyssa M.</div>
+        <div class="testimonial-title">HIIT Bootcamp Client</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="section-tag">Ready to Start?</div>
+    <h2 class="section-title">Your First Session<br /><span style="color:var(--accent)">Is On Me.</span></h2>
+    <p class="section-sub">
+      Book a free 30-minute consultation. We'll talk about your goals,
+      your schedule, and figure out exactly what program fits you.
+    </p>
+    <a href="mailto:stephsimontraining@gmail.com" class="btn-primary">Book Your Free Consult →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="nav-logo">Steph Simon</a>
+    <p>© 2026 Stephanie Simon Fitness · Chicago, IL</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/stephsimontraining" target="_blank">Instagram</a>
+      <a href="#services">Programs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
