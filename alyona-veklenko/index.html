@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alyona Veklenko | Personal Trainer Chicago</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f4;
+      --warm-white: #f5f0eb;
+      --sage: #7a9e87;
+      --sage-dark: #5c7d69;
+      --sage-light: #c5d9cc;
+      --charcoal: #2e2e2e;
+      --mid: #6b6b6b;
+      --light: #a8a8a8;
+      --border: #e2dbd4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+    }
+    .hero-text {
+      padding: 80px 60px 80px 80px;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sage);
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 420px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--sage);
+      color: white;
+      padding: 16px 36px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.25s;
+    }
+    .hero-cta:hover { background: var(--sage-dark); }
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: 20px;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-cta-secondary:hover { color: var(--sage); border-color: var(--sage); }
+
+    .hero-visual {
+      position: relative;
+      height: 100vh;
+      background: var(--sage-light);
+      overflow: hidden;
+    }
+    .hero-visual-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 220px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      line-height: 1;
+      user-select: none;
+      letter-spacing: -0.03em;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 20px 32px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .hero-badge-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--sage);
+      line-height: 1;
+    }
+    .hero-badge-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 120px 80px;
+      background: white;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--warm-white);
+      padding: 48px 40px;
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: var(--sage-light); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--sage);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--charcoal);
+    }
+    .service-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy {
+      padding: 120px 80px;
+      background: var(--sage);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .philosophy-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 3vw, 48px);
+      font-weight: 300;
+      font-style: italic;
+      color: white;
+      line-height: 1.3;
+    }
+    .philosophy-quote::before {
+      content: '"';
+      font-size: 80px;
+      line-height: 0;
+      vertical-align: -0.4em;
+      margin-right: 8px;
+      opacity: 0.4;
+    }
+    .philosophy-right { color: rgba(255,255,255,0.85); }
+    .philosophy-right p {
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    .philosophy-right p:last-child { margin-bottom: 0; }
+
+    /* ABOUT */
+    .about {
+      padding: 120px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .about-visual-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      font-weight: 300;
+      color: var(--sage-light);
+      line-height: 1;
+      user-select: none;
+    }
+    .about-tag {
+      position: absolute;
+      top: 32px;
+      right: -20px;
+      background: var(--sage);
+      color: white;
+      padding: 16px 24px;
+      text-align: center;
+    }
+    .about-tag-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .about-tag-sub {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+    .about-content .section-eyebrow { margin-bottom: 12px; }
+    .about-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .about-content p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-certs {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    .cert-badge {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 120px 80px;
+      background: var(--warm-white);
+    }
+    .testimonials .section-header { margin-bottom: 64px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .testimonial-card {
+      background: white;
+      padding: 40px 36px;
+      border-top: 3px solid var(--sage);
+    }
+    .testimonial-stars {
+      color: var(--sage);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 120px 80px;
+      text-align: center;
+      background: white;
+    }
+    .cta-section .section-eyebrow { margin-bottom: 16px; }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 4vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+    .cta-section p {
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 460px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+    .cta-buttons { display: flex; gap: 20px; justify-content: center; align-items: center; }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+    .footer-ig {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-ig:hover { color: var(--sage-light); }
+    .footer-copy {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 100px 24px 60px; }
+      .hero-visual { height: 50vh; }
+      .services { padding: 80px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .philosophy { padding: 80px 24px; grid-template-columns: 1fr; gap: 40px; }
+      .about { padding: 80px 24px; grid-template-columns: 1fr; }
+      .testimonials { padding: 80px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; }
+      .cta-buttons { flex-direction: column; }
+      footer { padding: 40px 24px; flex-direction: column; text-align: center; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Alyona Veklenko</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Chicago Downtown · Personal Coach</p>
+      <h1 class="hero-title">
+        Movement<br>as <em>meditation.</em><br>Strength as<br><em>self-care.</em>
+      </h1>
+      <p class="hero-sub">Pilates, barre, TRX, and functional training designed around you — your body, your goals, your pace. Based in Chicago's Downtown.</p>
+      <a href="#contact" class="hero-cta">Book a Session</a>
+      <a href="#services" class="hero-cta-secondary">Explore Services</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-inner">
+        <span class="hero-initials">AV</span>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-num">3K+</div>
+        <div class="hero-badge-label">Clients & Followers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">What I Offer</p>
+        <h2 class="section-title">Training tailored<br>to your life.</h2>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Pilates & Barre</div>
+        <p class="service-desc">Low-impact, high-reward training that builds long, lean muscle while improving posture, balance, and body awareness.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">TRX Suspension</div>
+        <p class="service-desc">Full-body strength and stability using your own bodyweight. Scalable for any fitness level — from beginner to advanced.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">Functional Training</div>
+        <p class="service-desc">Movement patterns that carry over into real life — mobility, strength, and coordination trained together.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-name">Gym Training</div>
+        <p class="service-desc">Personalized gym sessions combining strength, conditioning, and corrective work. Progress you can see and feel.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-name">Kauai Retreat</div>
+        <p class="service-desc">An immersive wellness experience in Hawaii — movement, mindfulness, and community in one of the world's most beautiful places.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-name">Online Coaching</div>
+        <p class="service-desc">Custom programming and coaching delivered wherever you are — Chicago, New York, California, or anywhere in between.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="philosophy-left">
+      <p class="philosophy-quote">Beauty is not separate from strength. They are the same thing.</p>
+    </div>
+    <div class="philosophy-right">
+      <p>I believe movement should feel like a gift — not a punishment. My approach blends the discipline of pilates and barre with the power of functional strength training, creating a practice that is both challenging and deeply nourishing.</p>
+      <p>Every session is designed with intention. We move with purpose, breathe with awareness, and celebrate what your body is capable of — today, exactly as it is.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-visual">
+      <span class="about-visual-text">AV</span>
+      <div class="about-tag">
+        <div class="about-tag-main">Chicago Downtown</div>
+        <div class="about-tag-sub">@alyona.veklenko</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-eyebrow">About Alyona</p>
+      <h2>Your daily dose of beauty &amp; mindful movement.</h2>
+      <p>I'm Alyona — a certified personal coach based in Chicago's Downtown, with a passion for helping people discover what their bodies are truly capable of. My background spans pilates, barre, TRX, functional training, and gym coaching.</p>
+      <p>I train clients across Chicago, New York, and California, and host yearly retreats in Kauai, Hawaii — bringing together a community of people who believe that wellness is a way of life, not a chore.</p>
+      <p>Whether you're just starting out or looking to deepen an existing practice, I meet you exactly where you are.</p>
+      <div class="about-certs">
+        <span class="cert-badge">Certified Personal Coach</span>
+        <span class="cert-badge">Pilates Instructor</span>
+        <span class="cert-badge">TRX Certified</span>
+        <span class="cert-badge">Barre Specialist</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">What Clients Say</p>
+        <h2 class="section-title">Real results,<br>real people.</h2>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Alyona changed the way I think about movement entirely. I came in looking to lose weight — I left with a whole new relationship with my body."</p>
+        <p class="testimonial-author">— Lauren M., Chicago</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The Kauai retreat was life-changing. I've never felt so connected to my body and my goals. Alyona creates such a safe and inspiring space."</p>
+        <p class="testimonial-author">— Sofia K., New York</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I've tried a lot of trainers. Nobody balances challenge and mindfulness the way Alyona does. My posture, strength, and confidence are completely transformed."</p>
+        <p class="testimonial-author">— Jessica T., Chicago</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <p class="section-eyebrow">Start Your Journey</p>
+    <h2>Ready to move with intention?</h2>
+    <p>Whether you're in Chicago, online, or thinking about the next retreat — I'd love to connect. Everything on this site can be customized to fit exactly what you need.</p>
+    <div class="cta-buttons">
+      <a href="mailto:alyona.veklenko@gmail.com" class="hero-cta">Get In Touch</a>
+      <a href="https://instagram.com/alyona.veklenko" target="_blank" class="hero-cta-secondary">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Alyona Veklenko</span>
+    <a href="https://instagram.com/alyona.veklenko" target="_blank" class="footer-ig">@alyona.veklenko</a>
+    <span class="footer-copy">© 2026 Alyona Veklenko · Chicago, IL</span>
+  </footer>
+
+</body>
+</html>
